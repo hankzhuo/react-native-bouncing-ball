@@ -4,7 +4,13 @@ react native component bouncing ball for both iOS and Android
 
 ## Demo
 
-![ball_image](./example/images/ball.gif)
+Use the `image` generate ball
+
+![ball_image](./example/images/ball-image.gif)
+
+Use the `View` generate ball
+
+![ball_view](./example/images/ball-view.gif)
 
 ## Install
 
@@ -12,27 +18,27 @@ react native component bouncing ball for both iOS and Android
 
 ## Usage
 
+Use the `image` generate ball
+
 ```javascript
 import React, {PureComponent} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import { StyleSheet, ImageBackground} from 'react-native';
 import BouncingBalls from 'react-native-bouncing-ball'
 
 export default class BouncingBallsComponent extends PureComponent {
   render() {
     return (
-      <View style={styles.container}>
+      <ImageBackground style={styles.container} source={require('./images/background.jpg')}>
         <BouncingBalls
-          amount={5}
+          amount={10}
           animationDuration={5000}
-          minSpeed={10}
-          maxSpeed={100}
+          minSpeed={30}
+          maxSpeed={200}
           minSize={40}
           maxSize={100}
-          style={{
-            backgroundColor: 'red'
-          }}
-      />
-      </View>
+          imageCircle={require('./images/bouncing_ball.png')}
+         />
+      </ImageBackground>
     );
   }
 }
@@ -42,13 +48,49 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#000',
   }
 });
 
 ```
 
-## Props
+Use the `View` generate ball
+
+```javascript
+import React, {PureComponent} from 'react';
+import { StyleSheet, ImageBackground} from 'react-native';
+import BouncingBalls from 'react-native-bouncing-ball'
+
+export default class BouncingBallsComponent extends PureComponent {
+  render() {
+    return (
+      <ImageBackground style={styles.container} source={require('./images/background.jpg')}>
+        <BouncingBalls
+          amount={10}
+          animationDuration={5000}
+          minSpeed={30}
+          maxSpeed={200}
+          minSize={40}
+          maxSize={100}
+          style={{
+            backgroundColor: '#CDFFCD'
+          }}
+         />
+      </ImageBackground>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
+});
+
+```
+
+## API
 
 | Props | PropType | Default Value | Description |
 | ----- | --------- | ------------| ------------- | 
@@ -59,7 +101,8 @@ const styles = StyleSheet.create({
 | minSize | number |  40 | Minimum size |
 | maxSize | number |  100 | Maximum size |
 | style | object |  null | style of balls |
-| imageCircle | func | `require('./xxx.png')` | Use the image, instead of `View`|
+| imageCircle | object | null | Choose `View` or `Image` generate ball|
+
 
 ## LICENCE
 

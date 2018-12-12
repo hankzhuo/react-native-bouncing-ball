@@ -23,11 +23,10 @@ export default class App extends Component<Props> {
           maxSpeed={200}
           minSize={40}
           maxSize={100}
-          imageCircle={require('./images/bouncing_ball.png')}
           style={{
-            // backgroundColor: 'rgba(255,255,255,0.5)',
+            backgroundColor: 'rgba(255, 255, 255, 0.4)'
           }}
-      />
+        />
       </ImageBackground>
     );
   }
