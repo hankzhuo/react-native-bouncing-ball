@@ -1,0 +1,32 @@
+{
+  "name": "react-native-bouncing-ball",
+  "version": "0.0.1",
+  "description": "A react-native bouncing ball coponent for both iOS and Android.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hankzhuo/react-native-bouncing-ball.git"
+  },
+  "keywords": [
+    "react",
+    "react-native",
+    "react-native-component",
+    "ios",
+    "android",
+    "bouncing",
+    "ball",
+    "bouncing-ball"
+  ],
+  "author": "hankzhuo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hankzhuo/react-native-bouncing-ball/issues"
+  },
+  "homepage": "https://github.com/hankzhuo/react-native-bouncing-ball#readme",
+  "dependencies": {
+    "prop-types": "^15.6.2"
+  }
+}
