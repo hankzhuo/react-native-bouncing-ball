@@ -17,10 +17,10 @@ export default class App extends Component<Props> {
     return (
       <ImageBackground style={styles.container} source={require('./images/background.jpg')}>
         <BouncingBalls
-          amount={5}
+          amount={10}
           animationDuration={5000}
-          minSpeed={10}
-          maxSpeed={100}
+          minSpeed={30}
+          maxSpeed={200}
           minSize={40}
           maxSize={100}
           imageCircle={require('./images/bouncing_ball.png')}
