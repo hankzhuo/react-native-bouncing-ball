@@ -8,6 +8,7 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
+// import BouncingBalls from 'react-native-bouncing-ball'
 import BouncingBalls from './BouncingBalls'
 
 type Props = {};
@@ -22,7 +23,6 @@ export default class App extends Component<Props> {
           maxSpeed={100}
           minSize={40}
           maxSize={100}
-          // imageCircle={require("./images/bouncing_ball.png")}
           style={{
             backgroundColor: 'red',
           }}
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#000',
   },
   welcome: {
     fontSize: 20,

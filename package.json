@@ -1,7 +1,7 @@
 {
   "name": "react-native-bouncing-ball",
-  "version": "0.0.2",
-  "description": "A react-native bouncing ball coponent for both iOS and Android.",
+  "version": "0.0.3",
+  "description": "A react-native bouncing ball component for both iOS and Android.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
