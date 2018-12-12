@@ -4018,6 +4018,12 @@ react-is@^16.6.1:
   version "16.6.3"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.6.3.tgz#d2d7462fcfcbe6ec0da56ad69047e47e56e7eac0"
 
+react-native-bouncing-ball@0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/react-native-bouncing-ball/-/react-native-bouncing-ball-0.0.3.tgz#8957fe375ea1d3ecd577781d3bc7821162556689"
+  dependencies:
+    prop-types "^15.6.2"
+
 react-native@0.57.7:
   version "0.57.7"
   resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.57.7.tgz#5b3af1c43366c41d8d8d2540fea8ce590060bca1"
