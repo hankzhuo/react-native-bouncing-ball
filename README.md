@@ -4,7 +4,6 @@ react native component bouncing ball for both iOS and Android
 
 ## Demo
 
-![ball_view](./example/images/ball_view.gif)
 ![ball_image](./example/images/ball_image.gif)
 
 ## Install
