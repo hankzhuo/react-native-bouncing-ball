@@ -12,7 +12,7 @@ react native component bouncing ball for both iOS and Android
 
 ## Usage
 
-```
+```javascript
 import React, {PureComponent} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 import BouncingBalls from 'react-native-bouncing-ball'
