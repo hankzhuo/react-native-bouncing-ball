@@ -11,8 +11,7 @@ import {Platform, StyleSheet, Text, View, ImageBackground} from 'react-native';
 // import BouncingBalls from 'react-native-bouncing-ball'
 import BouncingBalls from './BouncingBalls'
 
-type Props = {};
-export default class App extends Component<Props> {
+export default class App extends Component {
   render() {
     return (
       <ImageBackground style={styles.container} source={require('./images/background.jpg')}>
@@ -37,7 +36,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    // backgroundColor: '#000',
   },
   welcome: {
     fontSize: 20,

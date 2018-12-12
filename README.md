@@ -4,11 +4,11 @@ react native component bouncing ball for both iOS and Android
 
 ## Demo
 
-Use the `image` generate ball
+Use the `<Image/>` generate ball
 
 ![ball_image](./example/images/ball-image.gif)
 
-Use the `View` generate ball
+Use the `<View/>` generate ball
 
 ![ball_view](./example/images/ball-view.gif)
 
@@ -18,7 +18,7 @@ Use the `View` generate ball
 
 ## Usage
 
-Use the `image` generate ball
+Use the `<Image/>` generate ball
 
 ```javascript
 import React, {PureComponent} from 'react';
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
 
 ```
 
-Use the `View` generate ball
+Use the `<View/>` generate ball
 
 ```javascript
 import React, {PureComponent} from 'react';
@@ -94,15 +94,14 @@ const styles = StyleSheet.create({
 
 | Props | PropType | Default Value | Description |
 | ----- | --------- | ------------| ------------- | 
-| amount | number |  1 | Number of ball |
-| animationDuration | number |  5000 | Duration of the animation |
-| minSpeed | number |  10 | Minimum speed |
-| maxSpeed | number |  100 | Maximum speed |
-| minSize | number |  40 | Minimum size |
-| maxSize | number |  100 | Maximum size |
-| style | object |  null | style of balls |
-| imageCircle | object | null | Choose `View` or `Image` generate ball|
-
+| amount | `number` |  1 | the number of balls |
+| animationDuration | `number` |  5000 | Every section animation time |
+| minSpeed | `number` |  30 | The slowest speed of the ball |
+| maxSpeed | `number` |  200 | The fastest speed of the ball |
+| minSize | `number` |  40 | The largest ball size |
+| maxSize | `number` |  100 | The smallest ball size |
+| style | `object` |  null | The style of the ball |
+| imageCircle | `object` | null | Choose `View` or `Image` generate ball|
 
 ## LICENCE
 
