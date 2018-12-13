@@ -16,12 +16,13 @@ export default class App extends Component {
     return (
       <ImageBackground style={styles.container} source={require('./images/background.jpg')}>
         <BouncingBalls
-          amount={10}
+          amount={1}
           animationDuration={5000}
           minSpeed={30}
           maxSpeed={200}
           minSize={40}
           maxSize={100}
+          // imageBall={require('./images/bouncing_ball.png')}
           style={{
             backgroundColor: 'rgba(255, 255, 255, 0.4)'
           }}

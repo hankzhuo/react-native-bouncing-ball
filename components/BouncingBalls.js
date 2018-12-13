@@ -3,37 +3,49 @@ import {View, Image, StyleSheet, Dimensions, Animated, Easing} from 'react-nativ
 import PropTypes from 'prop-types';
 
 class BouncingBalls extends PureComponent {
-
   static propTypes = {
-    // todo
+    amount: PropTypes.number.isRequired,
+    animationDuration: PropTypes.number.isRequired,
+    animationType: PropTypes.func,
+    minSpeed: PropTypes.number.isRequired,
+    maxSpeed: PropTypes.number.isRequired,
+    minSize: PropTypes.number.isRequired,
+    maxSize: PropTypes.number.isRequired,
+    imageBall: PropTypes.node,
   };
-
+  
   static defaultProps = {
-    // todo
+    amount: 1,
+    animationDuration: 5000,
+    minSpeed: 30,
+    maxSpeed: 200,
+    minSize: 40,
+    maxSize: 100,
+    animationType: Easing.linear
   };
-
+  
   constructor(props) {
     super(props);
-
+    
     this.screenWidth = Dimensions.get('window').width;
     this.screenHeight = Dimensions.get('window').height;
     this.circles = this.generateCircles();
-
+    
     this.state = {
       position: new Animated.ValueXY({x: 0, y: 0}),
     };
   }
-
+  
   componentDidMount() {
     this.traverseCircles();
   }
-
+  
   componentWillUnmount() {
     this.circles.forEach((item, index) => {
       this.state[`position${index}`].stopAnimation();
     });
   }
-
+  
   traverseCircles() {
     let _circle;
     this.circles.forEach((circle, index) => {
@@ -45,15 +57,15 @@ class BouncingBalls extends PureComponent {
       });
     });
   }
-
+  
   circleStartAnimation(circle, index) {
-    const {animationDuration} = this.props;
+    const {animationDuration, animationType} = this.props;
     Animated.timing(
       this.state[`position${index}`],
       {
         toValue: {x: circle.x, y: circle.y},
         duration: animationDuration,
-        easing: Easing.linear,
+        easing: animationType,
       },
     ).start(() => {
       this.setState({
@@ -64,16 +76,16 @@ class BouncingBalls extends PureComponent {
       });
     });
   }
-
-  updateCirclePosition(circle, index) {
+  
+  updateCirclePosition(circle) {
     const _circle = Object.assign({}, circle);
     const height = width = circle.style[1].width;
     const maxWidth = this.screenWidth - width;
     const maxHeight = this.screenHeight - height;
-
+    
     _circle.x = _circle.x + _circle.speedX;
     _circle.y = _circle.y + _circle.speedY;
-
+    
     if (_circle.x <= 0) {
       _circle.x = 0;
       _circle.speedX *= (-1);
@@ -81,7 +93,7 @@ class BouncingBalls extends PureComponent {
       _circle.x = maxWidth;
       _circle.speedX *= (-1);
     }
-
+    
     if (_circle.y <= 0) {
       _circle.y = 0;
       _circle.speedY *= (-1);
@@ -89,53 +101,53 @@ class BouncingBalls extends PureComponent {
       _circle.y = maxHeight;
       _circle.speedY *= (-1);
     }
-
+    
     return _circle;
   }
-
+  
   getRangeFromMinToMax(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
   }
-
+  
   generateCircles() {
-    const {amount, minSpeed, maxSpeed, minSize, maxSize, style, imageCircle, ...restProps} = this.props;
+    const {amount, minSpeed, maxSpeed, minSize, maxSize, imageBall, style, ...restProps} = this.props;
     const circles = [];
     let width, height, borderRadius, innerStyle, restStyles, item, direction;
-
+    
     if (amount < 1) return null;
-
+    
     for (var i = 0; i < amount; i++) {
       height = width = this.getRangeFromMinToMax(minSize, maxSize);
       borderRadius = height * 0.5;
       direction = Math.round(Math.random()) === 0 ? -1 : 1;
-
+      
       innerStyle = {
         height,
         width,
         borderRadius,
       };
-
+      
       restStyles = {
         x: this.getRangeFromMinToMax(0, this.screenWidth - width),
         y: this.getRangeFromMinToMax(0, this.screenHeight - height),
         speedX: direction * this.getRangeFromMinToMax(minSpeed, maxSpeed),
         speedY: direction * this.getRangeFromMinToMax(minSpeed, maxSpeed),
       };
-
-      item = imageCircle ?
+      
+      item = imageBall ?
         <Image
-          source={imageCircle}
+          source={imageBall}
           style={[styles.circle, {...innerStyle}, {...style}]} {...restStyles} {...restProps}
         /> : <View
           style={[styles.circle, {...innerStyle}, {...style}]} {...restStyles} {...restProps}
         />;
-
+      
       circles.push(item);
     }
-
+    
     return circles;
   }
-
+  
   render() {
     return <Animated.View style={styles.container}>
       {

@@ -1,6 +1,6 @@
 {
   "name": "react-native-bouncing-ball",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "A react-native bouncing ball component for both iOS and Android.",
   "main": "index.js",
   "scripts": {

@@ -1,6 +1,8 @@
 # react-native-bouncing-ball
 
-react native component bouncing ball for both iOS and Android
+[![npm version](https://badge.fury.io/js/react-native-bouncing-ball.svg)](https://badge.fury.io/js/react-native-bouncing-ball) ![](https://img.shields.io/github/license/hankzhuo/react-native-bouncing-ball.svg)
+
+react native component bouncing ball for both iOS and Android. There are two ways to generate balls, `<Image/>` and `<View/>`.
 
 ## Demo
 
@@ -16,13 +18,13 @@ Use the `<View/>` generate ball
 
 `npm i react-native-bouncing-ball --save`
 
-## Usage
+## Example
 
 Use the `<Image/>` generate ball
 
 ```javascript
 import React, {PureComponent} from 'react';
-import { StyleSheet, ImageBackground} from 'react-native';
+import {StyleSheet, ImageBackground} from 'react-native';
 import BouncingBalls from 'react-native-bouncing-ball'
 
 export default class BouncingBallsComponent extends PureComponent {
@@ -36,7 +38,7 @@ export default class BouncingBallsComponent extends PureComponent {
           maxSpeed={200}
           minSize={40}
           maxSize={100}
-          imageCircle={require('./images/bouncing_ball.png')}
+          imageBall={require('./images/bouncing_ball.png')}
          />
       </ImageBackground>
     );
@@ -57,7 +59,7 @@ Use the `<View/>` generate ball
 
 ```javascript
 import React, {PureComponent} from 'react';
-import { StyleSheet, ImageBackground} from 'react-native';
+import {StyleSheet, ImageBackground} from 'react-native';
 import BouncingBalls from 'react-native-bouncing-ball'
 
 export default class BouncingBallsComponent extends PureComponent {
@@ -96,14 +98,14 @@ const styles = StyleSheet.create({
 | ----- | --------- | ------------| ------------- | 
 | amount | `number` |  1 | the number of balls |
 | animationDuration | `number` |  5000 | Every section animation time |
+| animationType | `func` | `Easing.linear` | Animation type |
 | minSpeed | `number` |  30 | The slowest speed of the ball |
 | maxSpeed | `number` |  200 | The fastest speed of the ball |
 | minSize | `number` |  40 | The largest ball size |
 | maxSize | `number` |  100 | The smallest ball size |
 | style | `object` |  null | The style of the ball |
-| imageCircle | `object` | null | Choose `View` or `Image` generate ball|
+| imageBall | `object` | null | Choose `Image` generate ball|
 
 ## LICENCE
 
-MIT
-
+MIT Licence
