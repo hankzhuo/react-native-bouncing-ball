@@ -13,7 +13,7 @@ class BouncingBalls extends PureComponent {
     maxSize: PropTypes.number.isRequired,
     imageBall: PropTypes.node,
   };
-  
+
   static defaultProps = {
     amount: 1,
     animationDuration: 5000,
@@ -21,43 +21,42 @@ class BouncingBalls extends PureComponent {
     maxSpeed: 200,
     minSize: 40,
     maxSize: 100,
-    animationType: Easing.linear
+    animationType: Easing.linear,
   };
-  
+
   constructor(props) {
     super(props);
-    
+
     this.screenWidth = Dimensions.get('window').width;
     this.screenHeight = Dimensions.get('window').height;
     this.circles = this.generateCircles();
-    
+
     this.state = {
       position: new Animated.ValueXY({x: 0, y: 0}),
     };
   }
-  
+
   componentDidMount() {
     this.traverseCircles();
   }
-  
+
   componentWillUnmount() {
     this.circles.forEach((item, index) => {
       this.state[`position${index}`].stopAnimation();
     });
   }
-  
+
   traverseCircles() {
-    let _circle;
     this.circles.forEach((circle, index) => {
       this.setState({
         [`position${index}`]: new Animated.ValueXY({x: circle.props.x, y: circle.props.y}),
       }, () => {
-        _circle = this.updateCirclePosition(circle.props, index);
+        const _circle = this.updateCirclePosition(circle.props, index);
         this.circleStartAnimation(_circle, index);
       });
     });
   }
-  
+
   circleStartAnimation(circle, index) {
     const {animationDuration, animationType} = this.props;
     Animated.timing(
@@ -68,24 +67,24 @@ class BouncingBalls extends PureComponent {
         easing: animationType,
       },
     ).start(() => {
-      this.setState({
-        [`position${index}`]: new Animated.ValueXY({x: circle.x, y: circle.y}),
-      }, () => {
+      const currentPosition = this.state[`position${index}`];
+      currentPosition.stopAnimation(() => {
+        currentPosition.setValue({x: circle.x, y: circle.y});
         let _circle = this.updateCirclePosition(circle, index);
         requestAnimationFrame(() => this.circleStartAnimation(_circle, index));
       });
     });
   }
-  
+
   updateCirclePosition(circle) {
     const _circle = Object.assign({}, circle);
     const height = width = circle.style[1].width;
     const maxWidth = this.screenWidth - width;
     const maxHeight = this.screenHeight - height;
-    
+
     _circle.x = _circle.x + _circle.speedX;
     _circle.y = _circle.y + _circle.speedY;
-    
+
     if (_circle.x <= 0) {
       _circle.x = 0;
       _circle.speedX *= (-1);
@@ -93,7 +92,7 @@ class BouncingBalls extends PureComponent {
       _circle.x = maxWidth;
       _circle.speedX *= (-1);
     }
-    
+
     if (_circle.y <= 0) {
       _circle.y = 0;
       _circle.speedY *= (-1);
@@ -101,39 +100,39 @@ class BouncingBalls extends PureComponent {
       _circle.y = maxHeight;
       _circle.speedY *= (-1);
     }
-    
+
     return _circle;
   }
-  
+
   getRangeFromMinToMax(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
   }
-  
+
   generateCircles() {
     const {amount, minSpeed, maxSpeed, minSize, maxSize, imageBall, style, ...restProps} = this.props;
     const circles = [];
     let width, height, borderRadius, innerStyle, restStyles, item, direction;
-    
+
     if (amount < 1) return null;
-    
+
     for (var i = 0; i < amount; i++) {
       height = width = this.getRangeFromMinToMax(minSize, maxSize);
       borderRadius = height * 0.5;
       direction = Math.round(Math.random()) === 0 ? -1 : 1;
-      
+
       innerStyle = {
         height,
         width,
         borderRadius,
       };
-      
+
       restStyles = {
         x: this.getRangeFromMinToMax(0, this.screenWidth - width),
         y: this.getRangeFromMinToMax(0, this.screenHeight - height),
         speedX: direction * this.getRangeFromMinToMax(minSpeed, maxSpeed),
         speedY: direction * this.getRangeFromMinToMax(minSpeed, maxSpeed),
       };
-      
+
       item = imageBall ?
         <Image
           source={imageBall}
@@ -141,15 +140,15 @@ class BouncingBalls extends PureComponent {
         /> : <View
           style={[styles.circle, {...innerStyle}, {...style}]} {...restStyles} {...restProps}
         />;
-      
+
       circles.push(item);
     }
-    
+
     return circles;
   }
-  
+
   render() {
-    return <Animated.View style={styles.container}>
+    return <View style={styles.container}>
       {
         this.circles.map(((item, index) => {
           return (
@@ -161,7 +160,7 @@ class BouncingBalls extends PureComponent {
           );
         }))
       }
-    </Animated.View>;
+    </View>;
   }
 }
 
