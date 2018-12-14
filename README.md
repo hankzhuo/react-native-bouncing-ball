@@ -2,7 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/react-native-bouncing-ball.svg)](https://badge.fury.io/js/react-native-bouncing-ball) ![](https://img.shields.io/github/license/hankzhuo/react-native-bouncing-ball.svg)
 
-react native component bouncing ball for both iOS and Android. There are two ways to generate balls, `<Image/>` and `<View/>`.
+React Native component bouncing ball for both iOS and Android. There are two ways to generate balls, `<Image/>` and `<View/>`. The balls can always move randomly in the screen. When the component will Unmount, the animation will stop. 
 
 ## Demo
 
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
 
 ```
 
-## API
+## Props
 
 | Props | PropType | Default Value | Description |
 | ----- | --------- | ------------| ------------- | 
